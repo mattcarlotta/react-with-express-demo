@@ -5,8 +5,6 @@ const morgan = require("morgan");
 const process = require("process");
 const { resolve } = require("path");
 
-const { NODE_ENV } = process.env;
-
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -14,7 +12,7 @@ require("dotenv").config({
 const app = express();
 const router = express.Router();
 const currentDirectory = process.cwd();
-const { API_PORT, CLIENT, PORT, REACT_APP_API } = process.env;
+const { API_PORT, CLIENT, NODE_ENV, PORT, REACT_APP_API } = process.env;
 const inProduction = NODE_ENV === "production";
 
 // allow incoming requests to come from client only
